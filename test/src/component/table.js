@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
+import '../css/index.css';
 class Table extends React.Component {
     constructor(props){
         super(props);

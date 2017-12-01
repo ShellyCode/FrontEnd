@@ -1,9 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import Greeting from './greeting'
-import Table from './table';
-import UserInput from './userInput';
+import './css/index.css';
+import Greeting from './component/greeting'
+import Table from './component/table';
+import UserInput from './component/userInput';
 
 class App extends React.Component {
     constructor(props) {

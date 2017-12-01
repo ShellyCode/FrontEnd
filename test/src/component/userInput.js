@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
+import '../css/index.css';
 
 class UserInput extends React.Component {
     constructor(props){

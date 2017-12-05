@@ -1,4 +1,4 @@
-import undoable, { distinctState } from 'redux-undo'
+import undoable from 'redux-undo'
 
 // const initialState = {
 //     tableContents: [[1,2,3],[4,5,6]],
@@ -38,6 +38,8 @@ const contentReducer = (state = {
                 tableContents: tableContents
             };
             break;
+        default:
+            return state;
     };
     return state;
 };

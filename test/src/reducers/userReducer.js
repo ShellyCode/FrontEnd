@@ -15,6 +15,8 @@ const userReducer = (state = {
                 age: action.payload
             };
             break;
+        default:
+            return state;
     }
     return state;
 };

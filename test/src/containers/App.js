@@ -6,28 +6,26 @@ import {connect} from "react-redux";
 import { ActionCreators as UndoActionCreators } from 'redux-undo';
 import {updateCellContent,updateCellNumber} from "../actions/tableAction";
 
-class App extends React.Component {
-    render(){
-        const row = this.props.tableState.row;
-        const col = this.props.tableState.col;
-        const tableContents = this.props.tableState.tableContents;
-        const currentCell = tableContents[row][col];
-        return(
-            <div>
-                <Greeting/>
-                <UserInput
-                    company= {currentCell}
-                    onCompanyChange={(company) => this.props.updateCellContent(company)}
-                    onPositionChange={() => this.props.updateCellNumber()}
-                    canUndo = {this.props.canUndo}
-                    canRedo ={this.props.canRedo}
-                    onUndoChange={this.props.onUndo}
-                    onRedoChange={this.props.onRedo}
-                />
-                <Table tableContents={tableContents}/>
-            </div>
-        );
-    }
+const App = (props) => {
+    const row = props.tableState.row;
+    const col = props.tableState.col;
+    const tableContents = props.tableState.tableContents;
+    const currentCell = tableContents[row][col];
+    return(
+        <div>
+            <Greeting/>
+            <UserInput
+                company= {currentCell}
+                onCompanyChange={(company) => props.updateCellContent(company)}
+                onPositionChange={() => props.updateCellNumber()}
+                canUndo = {props.canUndo}
+                canRedo ={props.canRedo}
+                onUndoChange={props.onUndo}
+                onRedoChange={props.onRedo}
+            />
+            <Table tableContents={tableContents}/>
+        </div>
+    );
 }
 const mapStateToProps = (state) => {
     return {

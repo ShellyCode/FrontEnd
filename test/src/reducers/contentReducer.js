@@ -1,17 +1,18 @@
-const initialState = {
-    tableContents: [[1,2,3],[4,5,6]],
-    row: 0,
-    col: 0
-}
+import undoable, { distinctState } from 'redux-undo'
+
+// const initialState = {
+//     tableContents: [[1,2,3],[4,5,6]],
+//     row: 0,
+//     col: 0
+// }
 const contentReducer = (state = {
     tableContents: [[1,2,3],[4,5,6]],
     row: 0,
     col: 0} , action)  => {
-
     let row = state.row;
     let col = state.col;
-    let tableContents = state.tableContents.slice();
-    console.log("state   ", state);
+    let tableContents = state.tableContents.map((arr)=>{return arr.slice()});
+
     switch (action.type) {
         case 'NEXT':
             if(col >= 2){
@@ -32,7 +33,6 @@ const contentReducer = (state = {
             break;
         case 'UPDATE':
             tableContents[state.row][state.col] = action.payload;
-
             state = {
                 ...state,
                 tableContents: tableContents
@@ -42,4 +42,4 @@ const contentReducer = (state = {
     return state;
 };
 
-export default contentReducer;
+export default undoable(contentReducer);

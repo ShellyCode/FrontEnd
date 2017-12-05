@@ -7,12 +7,20 @@ class UserInput extends React.Component {
         super(props);
         this.handleChange = this.handleChange.bind(this);
         this.handleClick = this.handleClick.bind(this);
+        this.handleUndo = this.handleUndo.bind(this);
+        this.handleRedo = this.handleRedo.bind(this);
     }
     handleChange(e){
         this.props.onCompanyChange(e.target.value)
     }
     handleClick(){
         this.props.onPositionChange()
+    }
+    handleUndo(){
+        this.props.onUndoChange()
+    }
+    handleRedo(){
+        this.props.onRedoChange()
     }
 
     render() {
@@ -23,6 +31,8 @@ class UserInput extends React.Component {
                 </label>
                 <input type="text" value={this.props.company} onChange={this.handleChange}/>
                 <button onClick={this.handleClick}> next </button>
+                <button onClick={this.handleUndo} disabled = {!this.props.canUndo}> Undo </button>
+                <button onClick={this.handleRedo} disabled = {!this.props.canRedo}> Redo </button>
             </div>
         )
     }
